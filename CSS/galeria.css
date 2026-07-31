@@ -1,0 +1,297 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --laranja-escuro:#8f2f00;
+    --laranja-principal:#f07901;
+    --laranja-vivo:#ff8a1d;
+    --laranja-claro:#ffd7a6;
+    --vermelho-quente:#b83218;
+    --creme-quente:#fff4e6;
+    --marrom-profundo:#24100a;
+    --texto-escuro:#2f1a12;
+    --branco:#ffffff;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:var(--creme-quente);
+    color:var(--texto-escuro);
+    line-height:1.8;
+}
+
+
+.hero-galeria{
+    position:relative;
+    min-height:60vh;
+    overflow:hidden;
+    background:var(--marrom-profundo);
+}
+
+.hero-video{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.apresentacao-galeria{
+    padding:70px 20px 0;
+    text-align:center;
+    background:var(--creme-quente);
+}
+
+/*
+.card-apresentacao{
+    width:min(100%, 720px);
+    margin:0 auto;
+    padding:42px 30px;
+    border-radius:22px;
+    background:var(--branco);
+    box-shadow:0 14px 35px rgba(143,47,0,.12);
+}*/
+
+.card-apresentacao{
+    position: relative;
+
+    width:min(100%,760px);
+    margin:0 auto;
+    padding:50px 40px;
+
+    border-radius:22px;
+
+    /* Mesmo fundo do hover do card Sobre */
+    background:#ffd7a62c;
+
+    overflow:hidden;
+
+    box-shadow:
+        0 15px 35px rgba(143,47,0,.18);
+}
+
+.card-apresentacao::before{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    padding:3px;
+    border-radius:22px;
+
+    background:linear-gradient(
+        90deg,
+        var(--laranja-principal),
+        var(--laranja-claro),
+        var(--vermelho-quente)
+    );
+
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    mask-composite:exclude;
+    -webkit-mask-composite:xor;
+}
+/*
+.card-apresentacao h1{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(3.2rem,8vw,5.5rem);
+    letter-spacing:.08em;
+    color:var(--laranja-escuro);
+}
+
+.card-apresentacao p{
+    margin-top:18px;
+    font-size:1.1rem;
+    line-height:1.8;
+}
+
+.linha{
+    display:block;
+    width:180px;
+    height:1px;
+    margin:20px auto;
+    background:var(--laranja-claro);
+}*/
+
+.card-apresentacao h1{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(3rem,7vw,5rem);
+    letter-spacing:.08em;
+    color:var(--laranja-escuro);
+    margin-bottom:10px;
+}
+
+.card-apresentacao p{
+    margin-top:18px;
+    font-size:1.1rem;
+    line-height:1.8;
+    color:var(--texto-escuro);
+}
+
+.linha{
+    display:block;
+    width:180px;
+    height:1px;
+    margin:20px auto;
+    background:var(--laranja-claro);
+}
+
+.filtros{
+    padding:40px 20px;
+    text-align:center;
+    background:linear-gradient(180deg,var(--creme-quente),#ffe9cc);
+}
+
+.filtros button{
+    margin:8px;
+    padding:12px 28px;
+    border:1px solid var(--laranja-principal);
+    border-radius:50px;
+    background:transparent;
+    color:var(--laranja-escuro);
+    font:500 .95rem 'Poppins',sans-serif;
+    cursor:pointer;
+    transition:transform .3s ease,background .3s ease,color .3s ease,box-shadow .3s ease;
+}
+
+.filtros button:hover,
+.filtros button.active{
+    transform:translateY(-3px);
+    background:var(--laranja-principal);
+    color:var(--branco);
+    box-shadow:0 10px 20px rgba(143,47,0,.18);
+}
+
+.galeria{
+    width:90%;
+    max-width:1098px;
+    margin:0 auto;
+    padding:28px 0 100px;
+    display:grid;
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+    gap:24px;
+}
+
+.item{
+    transition:opacity .35s ease,transform .35s ease;
+}
+
+.item img{
+    display:block;
+    width:100%;
+    aspect-ratio:2 / 3;
+    object-fit:cover;
+    border:3px solid var(--branco);
+    border-radius:22px;
+    box-shadow:0 10px 25px rgba(143,47,0,.12),0 20px 50px rgba(240,121,1,.10);
+    transition:transform .4s ease,box-shadow .4s ease,border-color .4s ease;
+}
+
+.item img:hover{
+    transform:translateY(-7px) scale(1.015);
+    border-color:var(--laranja-claro);
+    box-shadow:0 18px 35px rgba(143,47,0,.24),0 25px 60px rgba(240,121,1,.18);
+}
+
+.item.hide{
+    display:none;
+    opacity:0;
+    transform:scale(.85);
+}
+
+/* Foto horizontal ocupando toda a linha */
+.item.horizontal{
+    grid-column: 1 / -1;
+}
+
+.item.horizontal img{
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.video-slide{
+    overflow:hidden;
+    border:3px solid var(--branco);
+    border-radius:22px;
+    box-shadow:0 10px 25px rgba(143,47,0,.12),0 20px 50px rgba(240,121,1,.10);
+    aspect-ratio:2 / 3;
+}
+
+.video-slide video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.video-slide:hover{
+    transform:translateY(-7px) scale(1.015);
+    border-color:var(--laranja-claro);
+    box-shadow:0 18px 35px rgba(143,47,0,.24),0 25px 60px rgba(240,121,1,.18);
+}
+
+/* Vídeo horizontal */
+
+.video-horizontal{
+    grid-column: 1 / -1;
+    aspect-ratio: 16 / 9;
+}
+
+.video-horizontal video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (max-width:1000px){
+    .galeria{grid-template-columns:repeat(2, minmax(0, 1fr));}
+}
+
+@media (max-width:768px){
+    .hero-galeria{min-height:55vh;}
+    .apresentacao-galeria{padding:50px 16px 0;}
+    .card-apresentacao{padding:32px 20px;}
+    .card-apresentacao p{font-size:1rem;}
+    .filtros{padding:50px 12px 25px;}
+    .filtros button{padding:10px 20px;margin:5px 3px;}
+    .galeria{width:88%;padding-top:24px;grid-template-columns:1fr;}
+}
+
+
+/*Foto Horizontal*/
+@media (max-width:768px){
+
+    .item.horizontal{
+        grid-column:auto;
+    }
+
+    .item.horizontal img{
+        aspect-ratio:16/9;
+    }
+
+}
+
+/*Vídeo Horizontal*/
+@media (max-width:768px){
+
+    .video-horizontal{
+        grid-column: auto;
+        aspect-ratio: 16 / 9;
+    }
+
+}
